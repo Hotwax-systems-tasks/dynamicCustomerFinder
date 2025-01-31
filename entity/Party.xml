@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
+
+    <entity entity-name="Party" package="party.package">
+        <field name="partyId" type="id" is-pk="true"></field>
+        <field name="partyTypeEnumId" type="id"></field>
+        <relationship type="one" title="PartyType" related="moqui.basic.Enumeration">
+            <key-map field-name="partyTypeEnumId" related="enumId" />
+        </relationship>
+        <relationship type="one-nofk" related="party.package.Organization"></relationship>
+        <relationship type="one-nofk" related="party.package.Person"></relationship>
+
+        <seed-data>
+            <moqui.basic.EnumerationType description="Party Type" enumTypeId="PartyType" />
+            <moqui.basic.Enumeration description="Person type" enumId="Person" enumTypeId="PartyType" />
+            <moqui.basic.Enumeration description="Organization type" enumId="Organization" enumTypeId="PartyType" />
+        </seed-data>
+    </entity>
+
+    <entity entity-name="Person" package="party.package">
+        <field name="partyId" type="id" is-pk="true"></field>
+        <field name="firstName" type="text-medium"></field>
+        <field name="lastName" type="text-medium"></field>
+        <field name="gender" type="id"></field>
+        <field name="birth" type="date"></field>
+        <field name="occupation" type="text-medium"></field>
+
+        <relationship type="one" title="GenderType" related="moqui.basic.Enumeration">
+            <key-map field-name="gender" related="enumId" />
+        </relationship>
+        <relationship type="one" related="party.package.Party">
+            <key-map field-name="partyId" related="partyId" />
+        </relationship>
+
+        <seed-data>
+            <moqui.basic.EnumerationType description="Gender Type" enumTypeId="GenderType"/>
+            <moqui.basic.Enumeration description="Male" enumId="Male" enumTypeId="GenderType"/>
+            <moqui.basic.Enumeration description="Female" enumId="Female" enumTypeId="GenderType"/>
+            <moqui.basic.Enumeration description="Other" enumId="Other" enumTypeId="GenderType"/>
+        </seed-data>
+    </entity>
+
+    <entity entity-name="Organization" package="party.package">
+        <field name="partyId" type="id" is-pk="true"></field>
+        <field name="organizationName" type="text-medium"></field>
+
+        <relationship type="one" related="party.package.Party">
+            <key-map field-name="partyId" related="partyId" />
+        </relationship>
+    </entity>
+
+    <entity entity-name="PartyContactMech" package="party.package">
+        <field name="partyId" type="id" is-pk="true"></field>
+        <field name="contactMechId" type="id" is-pk="true"></field>
+        <field name="contactMechPurposeId" type="id"></field>
+        <field name="fromDate" type="date" is-pk="true"></field>
+        <field name="thruDate" type="date"></field>
+
+        <relationship type="one" related="party.package.Party">
+            <key-map field-name="partyId" related="partyId" />
+        </relationship>
+        <relationship type="one" related="party.package.ContactMech">
+            <key-map field-name="contactMechId" related="contactMechId" />
+        </relationship>
+        <relationship type="one" title="PurposeId" related="moqui.basic.Enumeration">
+            <key-map field-name="contactMechPurposeId" related="enumId" />
+        </relationship>
+
+        <seed-data>
+            <moqui.basic.EnumerationType description="Contact Mech Purpose" enumTypeId="PurposeId"/>
+            <moqui.basic.Enumeration description="Primary Email" enumId="EmailPrimary" enumTypeId="PurposeId"/>
+            <moqui.basic.Enumeration description="Quick Phone" enumId="PhoneQuick" enumTypeId="PurposeId"/>
+            <moqui.basic.Enumeration description="Primary Fax" enumId="FaxPrimary" enumTypeId="PurposeId"/>
+        </seed-data>
+    </entity>
+
+    <entity entity-name="ContactMech" package="party.package">
+        <field name="contactMechId" type="id" is-pk="true"></field>
+        <field name="infoString" type="text-medium"></field>
+
+        <relationship type="one-nofk" related="party.package.PostalAddress"></relationship>
+        <relationship type="one-nofk" related="party.package.TelecomAddress"></relationship>
+    </entity>
+
+    <entity entity-name="PostalAddress" package="party.package">
+        <field name="contactMechId" type="id" is-pk="true"></field>
+        <field name="address1" type="text-medium"></field>
+        <field name="address2" type="text-medium"></field>
+        <field name="city" type="text-medium"></field>
+        <field name="postalCode" type="text-medium"></field>
+        <field name="state" type="text-medium"></field>
+
+        <relationship type="one" related="party.package.ContactMech">
+            <key-map field-name="contactMechId" related="contactMechId" />
+        </relationship>
+    </entity>
+
+    <entity entity-name="TelecomAddress" package="party.package">
+        <field name="contactMechId" type="id" is-pk="true"></field>
+        <field name="countryCode" type="number-integer"></field>
+        <field name="areaCode" type="number-integer"></field>
+        <field name="contactNumber" type="number-integer"></field>
+
+        <relationship type="one" related="party.package.ContactMech">
+            <key-map field-name="contactMechId" related="contactMechId" />
+        </relationship>
+    </entity>
+
+    <entity entity-name="PartyRole" package="party.package">
+        <field name="partyId" type="id" is-pk="true"></field>
+        <field name="roleEnumTypeId" type="id"></field>
+
+        <relationship type="one" related="party.package.Party">
+            <key-map field-name="partyId" related="partyId" />
+        </relationship>
+        <relationship type="one" title="RoleType" related="moqui.basic.Enumeration">
+            <key-map field-name="roleEnumTypeId" related="enumId" />
+        </relationship>
+
+        <seed-data>
+            <moqui.basic.EnumerationType description="Role Type" enumTypeId="RoleType"/>
+            <moqui.basic.Enumeration description="Customer" enumId="customer" enumTypeId="RoleType"/>
+            <moqui.basic.Enumeration description="Supplier" enumId="supplier" enumTypeId="RoleType"/>
+            <moqui.basic.Enumeration description="Distributor" enumId="distributor" enumTypeId="RoleType"/>
+            <moqui.basic.Enumeration description="Employee" enumId="employee" enumTypeId="RoleType"/>
+            <moqui.basic.Enumeration description="Manager" enumId="manager" enumTypeId="RoleType"/>
+            <moqui.basic.Enumeration description="Owner" enumId="owner" enumTypeId="RoleType"/>
+        </seed-data>
+    </entity>
+</entities>

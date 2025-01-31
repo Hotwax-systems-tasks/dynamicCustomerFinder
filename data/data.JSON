@@ -1,0 +1,168 @@
+[
+    {
+      "_dataType": "demo"
+    },
+    {
+      "_entity": "party.package.Party",
+      "partyId": "P001",
+      "partyTypeId": "Person"
+    },
+    {
+      "_entity": "party.package.Party",
+      "partyId": "P002",
+      "partyTypeId": "Organization"
+    },
+    {
+      "_entity": "party.package.Party",
+      "partyId": "P003",
+      "partyTypeId": "Person"
+    },
+    {
+      "_entity": "party.package.Party",
+      "partyId": "P004",
+      "partyTypeId": "Organization"
+    },
+    {
+      "_entity": "party.package.Person",
+      "partyId": "P001",
+      "firstName": "John",
+      "lastName": "Doe",
+      "dateOfBirth": "1990-05-15",
+      "genderEnumerationId": "Male",
+      "occupation": "Software Engineer",
+      "maritalStatusEnumId": "Single"
+    },
+    {
+      "_entity": "party.package.Person",
+      "partyId": "P003",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "dateOfBirth": "1985-03-22",
+      "genderEnumerationId": "Female",
+      "occupation": "Data Analyst",
+      "maritalStatusEnumId": "Married"
+    },
+    {
+      "_entity": "party.package.Organization",
+      "partyId": "P002",
+      "organizationName": "Tech Innovators Inc."
+    },
+    {
+      "_entity": "party.package.Organization",
+      "partyId": "P004",
+      "organizationName": "Green Earth Solutions"
+    },
+    {
+      "_entity": "party.package.PartyRole",
+      "partyId": "P001",
+      "roleTypeId": "Customer"
+    },
+    {
+      "_entity": "party.package.PartyRole",
+      "partyId": "P002",
+      "roleTypeId": "Supplier"
+    },
+    {
+      "_entity": "party.package.PartyRole",
+      "partyId": "P003",
+      "roleTypeId": "Consultant"
+    },
+    {
+      "_entity": "party.package.PartyRole",
+      "partyId": "P004",
+      "roleTypeId": "Administrator"
+    },
+    {
+      "_entity": "party.package.ContactMech",
+      "contactMechId": "CM001",
+      "contactMechEnumeration": "EMAIL"
+    },
+    {
+      "_entity": "party.package.ContactMech",
+      "contactMechId": "CM002",
+      "contactMechEnumeration": "POSTAL"
+    },
+    {
+      "_entity": "party.package.ContactMech",
+      "contactMechId": "CM003",
+      "contactMechEnumeration": "TELECOM"
+    },
+    {
+      "_entity": "party.package.ContactMech",
+      "contactMechId": "CM004",
+      "contactMechEnumeration": "SOCIAL_MEDIA"
+    },
+    {
+      "_entity": "party.package.PartyContactMech",
+      "partyId": "P001",
+      "contactMechId": "CM001",
+      "contactMechPurposeId": "HOME",
+      "fromDate": "2025-01-01",
+      "thruDate": "2025-12-31"
+    },
+    {
+      "_entity": "party.package.PartyContactMech",
+      "partyId": "P002",
+      "contactMechId": "CM002",
+      "contactMechPurposeId": "BILLING",
+      "fromDate": "2024-01-01",
+      "thruDate": "2025-01-01"
+    },
+    {
+      "_entity": "party.package.PartyContactMech",
+      "partyId": "P003",
+      "contactMechId": "CM003",
+      "contactMechPurposeId": "WORK",
+      "fromDate": "2025-02-15",
+      "thruDate": "2025-12-31"
+    },
+    {
+      "_entity": "party.package.PartyContactMech",
+      "partyId": "P004",
+      "contactMechId": "CM004",
+      "contactMechPurposeId": "OFFICE",
+      "fromDate": "2024-05-01",
+      "thruDate": "2025-07-01"
+    },
+    {
+      "_entity": "party.package.PostalAddress",
+      "contactMechId": "CM002",
+      "address1": "123 Elm Street",
+      "address2": "Apt 45",
+      "city": "New York",
+      "postalCode": "10001"
+    },
+    {
+      "_entity": "party.package.PostalAddress",
+      "contactMechId": "CM005",
+      "address1": "456 Oak Avenue",
+      "address2": "",
+      "city": "San Francisco",
+      "postalCode": "94103"
+    },
+    {
+      "_entity": "party.package.TelecomNumber",
+      "contactMechId": "CM003",
+      "countryCode": "+1",
+      "areaCode": "212",
+      "contactNumber": "5551234"
+    },
+    {
+      "_entity": "party.package.TelecomNumber",
+      "contactMechId": "CM006",
+      "countryCode": "+44",
+      "areaCode": "20",
+      "contactNumber": "1234567"
+    },
+    {
+      "_entity": "party.package.EmailAddress",
+      "contactMechId": "CM001",
+      "emailAddress": "john.doe@example.com"
+    },
+    {
+      "_entity": "party.package.EmailAddress",
+      "contactMechId": "CM007",
+      "emailAddress": "jane.smith@example.org"
+    }
+  ]
+  

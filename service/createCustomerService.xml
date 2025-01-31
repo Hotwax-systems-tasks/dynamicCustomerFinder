@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+<service verb="create" noun="Customer" type="script" location="component://findcustomer/script/createCustomer.groovy">
+    <in-parameters>
+        <parameter name="firstName" required="true" />
+        <parameter name="lastName" required="true" />
+        <parameter name="email" required="true" />
+        <parameter name="phone" />
+        <parameter name="address1" />
+        <parameter name="address2" />
+        <parameter name="city" />
+        <parameter name="state" />
+        <parameter name="postalCode" />
+        <parameter name="gender" />
+        <parameter name="roleType" />
+    </in-parameters>
+    <out-parameters>
+        <parameter name="partyId" />
+        <parameter name="successMessage" />
+    </out-parameters>
+</service>
+
+</services>

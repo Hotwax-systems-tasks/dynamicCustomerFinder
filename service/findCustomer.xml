@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+<service verb="fetch" noun="FindCustomer" type="script" location="component://findcustomer/script/FindCustomer.groovy">
+        <in-parameters>
+            <parameter name="emailAddress"/>
+            <parameter name="firstName" />
+            <parameter name="lastName" />
+            <parameter name="contactNumber" />
+            <parameter name="postalAddress" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="datalist" />
+        </out-parameters>
+    </service>
+</services>
